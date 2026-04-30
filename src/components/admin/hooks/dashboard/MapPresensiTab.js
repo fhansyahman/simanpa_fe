@@ -741,7 +741,7 @@ export function MapPresensiTab({ selectedDate, onDateChange }) {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden text-black">
       {/* Header */}
       <div className="bg-blue-600 text-white px-6 py-4">
         <div className="flex items-center justify-between mb-4">

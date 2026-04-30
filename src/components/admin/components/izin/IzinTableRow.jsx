@@ -31,16 +31,7 @@ export function IzinTableRow({
 
   return (
     <tr className="hover:bg-gray-50 transition-colors">
-      <td className="py-4 px-6">
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            checked={isSelected}
-            onChange={onToggleSelect}
-            className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-          />
-        </div>
-      </td>
+
       
       <td className="py-4 px-6">
         <div>

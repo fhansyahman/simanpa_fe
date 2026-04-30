@@ -15,21 +15,7 @@ export function TableHeader({ onToggleSelectAll, isAllSelected, isIndeterminate 
   return (
     <thead className="bg-gray-50 border-b border-gray-200">
       <tr>
-        <th className="py-4 px-6 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-12">
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              checked={isAllSelected}
-              ref={input => {
-                if (input) {
-                  input.indeterminate = isIndeterminate;
-                }
-              }}
-              onChange={onToggleSelectAll}
-              className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-            />
-          </div>
-        </th>
+        
         {columns.map((col, index) => (
           <th key={index} className="py-4 px-6 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
             <div className="flex items-center gap-2">

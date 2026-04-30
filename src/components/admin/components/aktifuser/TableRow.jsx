@@ -17,14 +17,7 @@ export function TableRow({
 
   return (
     <tr className="hover:bg-gray-50 transition-colors">
-      <td className="py-4 px-6">
-        <input
-          type="checkbox"
-          checked={isSelected}
-          onChange={onToggleSelect}
-          className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
-        />
-      </td>
+
       <td className="py-4 px-6">
         <div>
           <p className="font-medium text-gray-900">{user.nama}</p>

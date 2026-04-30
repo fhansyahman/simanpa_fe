@@ -404,7 +404,7 @@ export function CreateIzinModal({ isOpen, onClose, onSubmit }) {
             <button
               type="submit"
               disabled={loading || loadingUsers}
-              className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg text-sm font-medium hover:from-blue-700 hover:to-cyan-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="flex items-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg  text-sm font-medium shadow-sm"
             >
               {loading ? (
                 <>

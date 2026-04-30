@@ -70,7 +70,7 @@ export function ActionBar({
             {/* Tombol Create Izin */}
             <button
               onClick={onCreateClick}
-              className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg hover:from-green-700 hover:to-emerald-700 text-sm font-medium shadow-sm"
+              className="flex items-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg  text-sm font-medium shadow-sm"
               title="Buat Izin untuk Pegawai"
             >
               <PlusCircle size={16} />
