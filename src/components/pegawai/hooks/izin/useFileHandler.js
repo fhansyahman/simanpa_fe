@@ -13,7 +13,7 @@ export function useFileHandler() {
     try {
       // Handle file dari server (path)
       if (!dokumenPendukung.startsWith('data:') && !dokumenPendukung.startsWith('http')) {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sikopnas.web.id';
         const fileUrl = `${apiUrl}/uploads/izin/${dokumenPendukung}`;
         window.open(fileUrl, '_blank');
         return;
@@ -108,7 +108,7 @@ export function useFileHandler() {
         link.click();
         document.body.removeChild(link);
       } else if (!dokumenPendukung.startsWith('http')) {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://sikopnas.web.id';
         const fileUrl = `${apiUrl}/uploads/izin/${dokumenPendukung}`;
         window.open(fileUrl, '_blank');
       } else {
