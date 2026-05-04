@@ -54,7 +54,7 @@ export function Header({ activeTab, setActiveTab, sidebarOpen, setSidebarOpen })
             <Menu size={20} className="text-gray-300" />
           </button>
           <div>
-            <h2 className="text-lg font-semibold text-white">Dashboard Monitoring</h2>
+            <h2 className="text-lg font-semibold text-white">Dashboard Pemantuan</h2>
           </div>
         </div>
 

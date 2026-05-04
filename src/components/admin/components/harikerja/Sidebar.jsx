@@ -4,61 +4,57 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { 
-  Home, Users, Clock, ClipboardList, CalendarDays, 
+  Home, Users, Clock, ClipboardX , CalendarDays, 
   FileBarChart, ChevronDown, MapPin, ClipboardCheck,
-  FileText, Briefcase, Award, CheckSquare
+  FileText, Briefcase, Award, CheckSquare,Clipboard
 } from "lucide-react";
 
 const sidebarMenu = [
-  { 
-    title: "Dashboard", 
-    icon: <Home size={20} />,
-    href: "/admin/dashboard"
-  },
-  {
-    title: "Manajemen Pekerja",
-    icon: <Users size={20} />,
-    submenu: [
-      { name: "Data Pekerja", icon: <Users size={14} />, href: "/admin/datapekerja" },
-      { name: "Status Kontrak", icon: <CheckSquare size={14} />, href: "/admin/statuskontrak" },
-      { name: "Pembagian Wilayah", icon: <MapPin size={14} />, href: "/admin/pembagianwilayah" },
-    ],
-  },
-  {
-    title: "Kehadiran",
-    icon: <Clock size={20} />,
-    submenu: [
-      { name: "Presensi Hari Ini", icon: <FileText size={14} />, href: "/admin/presensihariini" },
-      { name: "Atur Waktu Kerja", icon: <Clock size={14} />, href: "/admin/waktukerja" },
-      { name: "Rekap Kehadiran", icon: <ClipboardCheck size={14} />, href: "/admin/laporankehadiran" },
-    ],
-  },
-  {
-    title: "Hasil Kerja",
-    icon: <Award size={20} />,
-    submenu: [
-      { name: "Kerja Hari Ini", icon: <ClipboardList size={14} />, href: "/admin/datakinerja" },
-      { name: "Rekap Kerja", icon: <Briefcase size={14} />, href: "/admin/rekapkerja" },
-    ],
-  },
-  {
-    title: "Kalender Kerja",
-    icon: <CalendarDays size={20} />,
-    href: "/admin/harikerjadanlibur",
-  },
-  {
-    title: "Izin & Cuti",
-    icon: <FileText size={20} />,
-    href: "/admin/izinataucuti"
-  }, 
-  {
-    title: "Laporan",
-    icon: <FileBarChart size={20} />,
-    submenu: [
-      { name: "Laporan Hasil Kerja", icon: <ClipboardCheck size={14} />, href: "/admin/laporankinerja" },
-    ],
-  },
-];
+    { 
+      title: "Dashboard", 
+      icon: <Home size={20} />,
+      href: "/admin/dashboard"
+    },
+    {
+      title: "Manajemen Pekerja",
+      icon: <Users size={20} />,
+      submenu: [
+        { name: "Data Pekerja", icon: <Users size={14} />, href: "/admin/datapekerja" },
+        { name: "Status Kontrak", icon: <CheckSquare size={14} />, href: "/admin/statuskontrak" },
+        { name: "Pembagian Wilayah", icon: <MapPin size={14} />, href: "/admin/pembagianwilayah" },
+        { name: "Atur Waktu Kerja", icon: <Clock size={14} />, href: "/admin/waktukerja" },
+      ],
+    },
+    {
+      title: "Manajemen Kehadiran",
+      icon: <Clock size={20} />,
+      submenu: [
+        { name: "Riwayat Kehadiran", icon: <FileText size={14} />, href: "/admin/riwayatkehadiran" },
+        { name: "Rekap Kehadiran", icon: <ClipboardCheck size={14} />, href: "/admin/laporankehadiran" },
+      ],
+    },
+    {
+      title: "Manajemen Kerja",  // ← NAMA GRUP BARU (ganti dari "Kinerja")
+      icon: <Award size={20} />,  // Icon award/target lebih menggambarkan hasil
+      submenu: [
+        { name: "Riwayat Hasil Kerja", icon: <Clipboard size={14} />, href: "/admin/riwayathasilkerja" },
+        { name: "Rekap Hasil Kerja", icon: <Briefcase size={14} />, href: "/admin/rekapkerja" }, // ← route /admin/rekapkerja
+        { name: "Laporan Hasil Kerja", icon: <ClipboardX size={14} />, href: "/admin/laporanhasilkerja" },
+
+      ],
+    },
+    {
+      title: "Kalender Kerja",
+      icon: <CalendarDays size={20} />,
+      href: "/admin/harikerjadanlibur",
+    },
+    {
+      title: "Izin & Cuti",
+      icon: <FileText size={20} />,
+      href: "/admin/izinataucuti"
+    }, 
+  ];
+
 
 function SidebarItem({ item, currentPath }) {
   const [open, setOpen] = useState(false);

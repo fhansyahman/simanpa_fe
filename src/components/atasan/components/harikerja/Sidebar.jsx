@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { 
-  Home, Users, Clock, ClipboardList, CalendarDays, 
-  FileBarChart, ChevronDown, Map, ClipboardCheck, List,
-  ClipboardX, UserCheck, Calendar, Settings, LogOut 
+  Home, Users, Clock, ClipboardX, CalendarDays, 
+  FileBarChart, ChevronDown, MapPin, ClipboardCheck,
+  FileText, Briefcase, Award, CheckSquare, Clipboard, List
 } from "lucide-react";
 
 const sidebarMenu = [
@@ -16,100 +16,115 @@ const sidebarMenu = [
     href: "/atasan/dashboard"
   },
   {
-    title: "Kehadiran",
-    icon: <Clock size={20} />,
-    href: "/atasan/kehadiran",
+    title: "Manajemen Pekerja",
+    icon: <Users size={20} />,
     submenu: [
-      { name: "Detail Presensi Hari Ini", icon: <List size={14} />, href: "/atasan/presensihariini" },
       { name: "Atur Waktu Kerja", icon: <Clock size={14} />, href: "/atasan/waktukerja" },
     ],
   },
   {
-    title: "Kinerja Harian",
-    icon: <ClipboardList size={20} />,
-    href: "/atasan/datakinerja",
+    title: "Manajemen Kehadiran",
+    icon: <Clock size={20} />,
+    submenu: [
+      { name: "Riwayat Kehadiran", icon: <FileText size={14} />, href: "/atasan/riwayatkehadiran" },
+      { name: "Rekap Kehadiran", icon: <ClipboardCheck size={14} />, href: "/atasan/laporankehadiran" },
+    ],
   },
   {
-    title: "Hari Kerja & Libur",
+    title: "Manajemen Kerja",
+    icon: <Award size={20} />,
+    submenu: [
+      { name: "Riwayat Hasil Kerja", icon: <Clipboard size={14} />, href: "/atasan/riwayathasilkerja" },
+      { name: "Rekap Hasil Kerja", icon: <Briefcase size={14} />, href: "/atasan/rekapkerja" },
+      { name: "Laporan Hasil Kerja", icon: <ClipboardX size={14} />, href: "/atasan/laporanhasilkerja" },
+    ],
+  },
+  {
+    title: "Kalender Kerja",
     icon: <CalendarDays size={20} />,
     href: "/atasan/harikerjadanlibur",
-    active: true,
   },
   {
     title: "Izin & Cuti",
-    icon: <ClipboardList size={20} />,
+    icon: <FileText size={20} />,
     href: "/atasan/izinataucuti"
-  }, 
-  {
-    title: "Laporan",
-    icon: <FileBarChart size={20} />,
-    href: "/atasan/laporan",
-    submenu: [
-      { name: "Laporan Kehadiran", icon: <ClipboardCheck size={14} />, href: "/atasan/laporankehadiran" },
-      { name: "Laporan Kinerja", icon: <ClipboardX size={14} />, href: "/atasan/laporankinerja" },
-    ],
   },
 ];
 
 function SidebarItem({ item, currentPath }) {
-  const [open, setOpen] = useState(item.active || false);
+  const [open, setOpen] = useState(false);
   
-  const isActive = item.active || 
-    (item.href && currentPath === item.href) ||
-    (item.submenu && item.submenu.some(sub => currentPath === sub.href));
+  // Cek apakah ada submenu yang aktif
+  const isSubmenuActive = item.submenu && item.submenu.some(sub => currentPath === sub.href);
+  const isActive = (!item.submenu && currentPath === item.href) || isSubmenuActive;
+
+  // Buka submenu secara otomatis jika ada yang aktif
+  if (item.submenu && isSubmenuActive && !open) {
+    if (open !== true) setOpen(true);
+  }
 
   return (
     <li className="mb-1">
-      <Link
-        href={item.href || "#"}
-        onClick={(e) => {
-          if (item.submenu) {
-            e.preventDefault();
-            setOpen(!open);
-          }
-        }}
-        className={`flex items-center justify-between px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 no-underline block ${
-          isActive 
-            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' 
-            : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-        }`}
-      >
-        <div className="flex items-center gap-3 flex-1">
+      {item.submenu ? (
+        <>
+          <button
+            onClick={() => setOpen(!open)}
+            className={`flex items-center justify-between w-full px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+              isActive 
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' 
+                : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            }`}
+          >
+            <div className="flex items-center gap-3 flex-1">
+              <span className={isActive ? 'text-white' : 'text-gray-400'}>
+                {item.icon}
+              </span>
+              <span className="text-sm font-medium">{item.title}</span>
+            </div>
+            <ChevronDown
+              size={16}
+              className={`transition-transform duration-200 ${
+                open ? 'rotate-180' : ''
+              } ${isActive ? 'text-white' : 'text-gray-400'}`}
+            />
+          </button>
+
+          {open && (
+            <ul className="ml-8 mt-1 space-y-1">
+              {item.submenu.map((subItem, index) => (
+                <li key={index}>
+                  <Link
+                    href={subItem.href}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors no-underline block ${
+                      currentPath === subItem.href 
+                        ? 'bg-gray-800 text-cyan-400' 
+                        : 'text-gray-400 hover:bg-gray-800 hover:text-cyan-400'
+                    }`}
+                  >
+                    <span className={currentPath === subItem.href ? 'text-cyan-400' : 'text-cyan-500'}>
+                      {subItem.icon}
+                    </span>
+                    <span>{subItem.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      ) : (
+        <Link
+          href={item.href}
+          className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 no-underline block ${
+            isActive 
+              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg' 
+              : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+          }`}
+        >
           <span className={isActive ? 'text-white' : 'text-gray-400'}>
             {item.icon}
           </span>
           <span className="text-sm font-medium">{item.title}</span>
-        </div>
-        {item.submenu && (
-          <ChevronDown
-            size={16}
-            className={`transition-transform duration-200 ${
-              open ? 'rotate-180' : ''
-            } ${isActive ? 'text-white' : 'text-gray-400'}`}
-          />
-        )}
-      </Link>
-
-      {item.submenu && open && (
-        <ul className="ml-8 mt-1 space-y-1">
-          {item.submenu.map((subItem, index) => (
-            <li key={index}>
-              <Link
-                href={subItem.href}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm transition-colors no-underline block ${
-                  currentPath === subItem.href 
-                    ? 'bg-gray-800 text-cyan-400' 
-                    : 'text-gray-400 hover:bg-gray-800 hover:text-cyan-400'
-                }`}
-              >
-                <span className={currentPath === subItem.href ? 'text-cyan-400' : 'text-cyan-500'}>
-                  {subItem.icon}
-                </span>
-                <span>{subItem.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        </Link>
       )}
     </li>
   );
@@ -126,7 +141,7 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
         
         <div className="h-16 flex items-center px-6 border-b border-gray-800">
           <div>
-            <h1 className="font-bold text-lg text-white">SIKOPNAS</h1>
+            <h1 className="font-bold text-lg text-white">SIMANPA</h1>
             <p className="text-xs text-cyan-400">Sistem UPT Wilayah Prajekan</p>
           </div>
         </div>

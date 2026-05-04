@@ -40,7 +40,7 @@ export function DetailModal({ isOpen, onClose, izin, onUpdateStatus }) {
 
   try {
     // Gunakan cara yang sama seperti pegawai - akses file static
-    const fileUrl = `http://localhost:5000/uploads/izin/${filename}`;
+    const fileUrl = `https://sikopnas.web.id/uploads/izin/${filename}`;
     
     // Buka di tab baru (sama seperti yang digunakan pegawai)
     window.open(fileUrl, '_blank');

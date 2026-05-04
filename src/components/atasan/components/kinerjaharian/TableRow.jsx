@@ -105,12 +105,6 @@ export function TableRow({
             color="blue"
             title="Lihat Detail"
           />
-          <ActionButton
-            onClick={onDelete}
-            icon={<Trash2 size={16} />}
-            color="red"
-            title="Hapus"
-          />
         </div>
       </td>
     </tr>

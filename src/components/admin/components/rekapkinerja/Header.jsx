@@ -57,7 +57,7 @@ export function Header({ sidebarOpen, setSidebarOpen }) {
             <Menu size={20} className="text-gray-300" />
           </button>
           <div>
-            <h2 className="text-lg font-semibold text-white">Rekap Kinerja Wilayah</h2>
+            <h2 className="text-lg font-semibold text-white">Rekap Hasil Kerja</h2>
           </div>
         </div>
 

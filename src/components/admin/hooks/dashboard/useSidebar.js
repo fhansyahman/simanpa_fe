@@ -25,23 +25,25 @@ export function useSidebar(setActiveTab) {
         { name: "Data Pekerja", icon: <Users size={14} />, href: "/admin/datapekerja" },
         { name: "Status Kontrak", icon: <CheckSquare size={14} />, href: "/admin/statuskontrak" },
         { name: "Pembagian Wilayah", icon: <MapPin size={14} />, href: "/admin/pembagianwilayah" },
+        { name: "Atur Waktu Kerja", icon: <Clock size={14} />, href: "/admin/waktukerja" },
       ],
     },
     {
-      title: "Kehadiran",
+      title: "Manajemen Kehadiran",
       icon: <Clock size={20} />,
       submenu: [
-        { name: "Presensi Hari Ini", icon: <FileText size={14} />, href: "/admin/presensihariini" },
-        { name: "Atur Waktu Kerja", icon: <Clock size={14} />, href: "/admin/waktukerja" },
+        { name: "Riwayat Kehadiran", icon: <FileText size={14} />, href: "/admin/presensihariini" },
         { name: "Rekap Kehadiran", icon: <ClipboardCheck size={14} />, href: "/admin/laporankehadiran" },
       ],
     },
     {
-      title: "Hasil Kerja",  // ← NAMA GRUP BARU (ganti dari "Kinerja")
+      title: "Manajemen Hasil Kerja",  // ← NAMA GRUP BARU (ganti dari "Kinerja")
       icon: <Award size={20} />,  // Icon award/target lebih menggambarkan hasil
       submenu: [
-        { name: "Kerja Hari Ini", icon: <Clipboard size={14} />, href: "/admin/datakinerja" },
-        { name: "Rekap Kerja", icon: <Briefcase size={14} />, href: "/admin/rekapkerja" }, // ← route /admin/rekapkerja
+        { name: "Riwayat Hasil Kerja", icon: <Clipboard size={14} />, href: "/admin/datakinerja" },
+        { name: "Rekap Hasil Kerja", icon: <Briefcase size={14} />, href: "/admin/rekapkerja" }, // ← route /admin/rekapkerja
+        { name: "Laporan Hasil Kerja", icon: <ClipboardX size={14} />, href: "/admin/laporankinerja" },
+
       ],
     },
     {
@@ -54,13 +56,6 @@ export function useSidebar(setActiveTab) {
       icon: <FileText size={20} />,
       href: "/admin/izinataucuti"
     }, 
-    {
-      title: "Laporan",
-      icon: <FileBarChart2 size={20} />,
-      submenu: [
-        { name: "Laporan Hasil Kerja", icon: <ClipboardX size={14} />, href: "/admin/laporankinerja" },
-      ],
-    },
   ];
 
   return { sidebarOpen, setSidebarOpen, sidebarMenu };
