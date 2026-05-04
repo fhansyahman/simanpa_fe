@@ -87,7 +87,7 @@ export function PasswordModal({ isOpen, onClose, user, passwordData, setPassword
             </button>
             <button
               type="submit"
-              className="px-4 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg text-sm font-medium hover:from-blue-700 hover:to-cyan-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-5 py-2.5 bg-green-600 to-cyan-600 text-white rounded-lg text-sm font-medium hover:from-blue-700 hover:to-cyan-700"
               disabled={!passwordData.password || !passwordData.confirmPassword || passwordData.password.length < 6}
             >
               Reset Password

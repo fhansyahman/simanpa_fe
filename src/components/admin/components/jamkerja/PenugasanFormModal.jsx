@@ -358,7 +358,7 @@ export const PenugasanFormModal = ({
               Batal
             </button>
             <button type="submit" className="px-6 py-2 bg-[#009688] text-white rounded-lg hover:bg-[#00796b] transition flex items-center gap-2">
-              <Save size={18} /> {isEdit ? 'Update' : 'Simpan'}
+              <Save size={18} /> {isEdit ? 'Edit' : 'Simpan'}
             </button>
           </div>
         </form>

@@ -171,7 +171,7 @@ function FormActions({ onClose, isEdit }) {
         className="px-4 py-2.5 bg-green-600 to-violet-600 text-white rounded-lg text-sm font-medium hover:from-purple-700 hover:to-violet-700 flex items-center gap-2"
       >
         <Save size={16} />
-        {isEdit ? 'Update Data' : 'Simpan Data'}
+        {isEdit ? 'Edit' : 'Simpan'}
       </button>
     </div>
   );

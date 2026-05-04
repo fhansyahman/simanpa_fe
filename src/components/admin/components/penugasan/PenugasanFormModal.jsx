@@ -344,7 +344,7 @@ export const PenugasanFormModal = ({
                 className="px-5 py-2.5 bg-green-600 text-white rounded-lg text-sm font-medium hover:from-emerald-700 hover:to-green-700 transition flex items-center gap-2 shadow-sm"
               >
                 <Save size={16} />
-                {isEdit ? 'Update' : 'Simpan'}
+                {isEdit ? 'Edit' : 'Simpan'}
               </button>
             </div>
           </form>

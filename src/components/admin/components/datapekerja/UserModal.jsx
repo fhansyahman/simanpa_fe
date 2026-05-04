@@ -268,7 +268,7 @@ function FormActions({ onClose, isEditing }) {
         type="submit"
         className="px-5 py-2.5 bg-green-600 text-white rounded-lg text-sm font-medium hover:from-blue-700 hover:to-cyan-700"
       >
-        {isEditing ? 'Perbarui' : 'Tambahkan'}
+        {isEditing ? 'Edit' : 'Tambahkan'}
       </button>
     </div>
   );
