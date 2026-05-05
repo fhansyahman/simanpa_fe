@@ -601,13 +601,13 @@ export default function PresenceCamera({
 
           {/* Video Preview */}
           <div className="relative bg-slate-100 rounded-lg overflow-hidden">
-            <video 
-              ref={videoRef} 
-              autoPlay 
-              playsInline 
-              muted
-              className="w-full aspect-video object-cover"
-            />
+           <video 
+  ref={videoRef} 
+  autoPlay 
+  playsInline 
+  muted
+  className="w-full aspect-[3/4] object-cover"  // Rasio 3:4 (lebih panjang ke bawah)
+/>
             
             {/* Loading State */}
             {(isLoading || !isVideoReady) && !cameraError && (
@@ -664,7 +664,7 @@ export default function PresenceCamera({
               }`}
             >
               <Camera size={18} /> 
-              {isMapReady ? "Ambil Foto + Peta" : "Menyiapkan Peta..."}
+              {isMapReady ? "Ambil Foto" : "Menyiapkan Peta..."}
             </button>
           </div>
         </>
