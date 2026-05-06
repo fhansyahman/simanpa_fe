@@ -17,7 +17,7 @@ export function Header({ onBack, onRefresh, isLoading }) {
               <ArrowLeft className="w-5 h-5 text-white" />
             </button>
             <div>
-    <h1 className="text-xl font-bold">Laporan Kinerja Harian</h1>
+    <h1 className="text-xl font-bold">Laporan Kerja Harian</h1>
               <p className="text-slate-300 mt-1 text-sm">Catat dan laporkan kegiatan harian Anda</p>
 
             </div>
