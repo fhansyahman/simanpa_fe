@@ -58,7 +58,7 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
   };
 
   // Fungsi untuk memotong data per halaman (3 baris per halaman)
-  const chunkDataForPages = (dataArray, rowsPerPage = 3) => {
+  const chunkDataForPages = (dataArray, rowsPerPage = 4) => {
     const pages = [];
     for (let i = 0; i < dataArray.length; i += rowsPerPage) {
       pages.push(dataArray.slice(i, i + rowsPerPage));
@@ -325,13 +325,12 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
       </head>
       <body style="color: #000000 !important;">
         <div class="header">
-          <h3 style="color: #000000 !important;">UNIT PELAKSANA TEKNIS BINA MARGA</h3>
-          <h3 style="color: #000000 !important;">WILAYAH PRAJEKAN</h3>
-        </div>
-
         <h3 class="title" style="color: #000000 !important;">HASIL KERJA LAPANGAN</h3>
         <h4 style="text-align: center; margin: 2px 0; color: #000000 !important;">WILAYAH ${wilayah.toUpperCase()}</h4>
         <h4 style="text-align: center; margin: 2px 0 5px 0; color: #000000 !important;">Tanggal : ${formatDate(tanggal)}</h4>
+        </div>
+
+
 
         <div class="table-container">
           <table>
@@ -360,7 +359,7 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
             </thead>
             <tbody>
               ${pageData.map((item, index) => {
-                const rowNumber = (pageIndex * 3) + index + 1;
+                const rowNumber = (pageIndex * 4) + index + 1;
                 return `
                   <tr>
                     <td align="center" style="color: #000000 !important;">${rowNumber}</td>
@@ -385,50 +384,21 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
                         }
                       </div>
                     </td>
-                    <td class="measurement" style="color: #000000 !important;">${item.panjang_kr || '0'}</td>
-                    <td class="measurement" style="color: #000000 !important;">${item.panjang_kn || '0'}</td>
+                    <td class="measurement" style="color: #000000 !important;">${item.panjang_kr || '0'} M</td>
+                    <td class="measurement" style="color: #000000 !important;">${item.panjang_kn || '0'} M</td>
                   </tr>
                 `;
               }).join('')}
               
-              <!-- Baris total per halaman -->
-              <tr class="total-row">
-                <td colspan="5" align="center" style="color: #000000 !important;"><strong>TOTAL HALAMAN ${pageIndex + 1}</strong></td>
-                <td class="measurement" style="color: #000000 !important;"><strong>${pageTotalKR.toFixed(2)}</strong></td>
-                <td class="measurement" style="color: #000000 !important;"><strong>${pageTotalKN.toFixed(2)}</strong></td>
-              </tr>
+
             </tbody>
           </table>
         </div>
 
-        <!-- Keterangan sederhana (tanpa statistik) -->
-        <div class="keterangan-sederhana">
-          <p style="color: #000000 !important;"><strong>Keterangan:</strong> KR = Kilometer Kanan, KN = Kilometer Kiri</p>
-        </div>
-
         <!-- Tanda Tangan -->
         ${pageIndex === totalPages - 1 ? `
-  <!-- Tanda Tangan (HANYA HALAMAN TERAKHIR) -->
-  <div class="ttd-container">
-    <div class="ttd">
-      <div>
-        <p style="color: #000000 !important;">Mengetahui,</p>
-        <p style="color: #000000 !important;">Kepala UPTD</p>
-        <div class="ttd-space"></div>
-        <div class="ttd-line"></div>
-        <p style="color: #000000 !important;">BUDI RAHMANTO, ST</p>
-        <p style="color: #000000 !important;">NIP : 19711009 200212 1 007.</p>
-      </div>
-      
-      <div>
-        <p style="color: #000000 !important;">Prajekan, ${formatDate(tanggal)}</p>
-        <p style="color: #000000 !important;">Koordinator</p>
-        <div class="ttd-space"></div>
-        <div class="ttd-line"></div>
-        <p style="color: #000000 !important;">SUTRAWI</p>
-        <p style="color: #000000 !important;">NIP : 19691004 200701 1 014.</p>
-      </div>
-    </div>
+
+
   </div>
 ` : ''}
 
@@ -455,7 +425,7 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
           body {
             font-family: "Times New Roman", serif;
             margin: 0;
-            padding: 20mm;
+            padding: 0mm;
             width: 210mm;
             min-height: 297mm;
             background: white;
@@ -464,12 +434,12 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
           
           .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
             color: #000000 !important;
           }
           
           .header h3 {
-            margin: 4px 0;
+            margin: 0px 0;
             font-size: 16pt;
             color: #000000 !important;
             font-weight: bold;
@@ -484,7 +454,7 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
           
           h3.title {
             text-align: center;
-            margin: 15px 0 5px 0;
+            margin: 0px 0 5px 0;
             font-size: 14pt;
             text-decoration: underline;
             color: #000000 !important;
@@ -539,7 +509,7 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
           
           .foto-container {
             width: 100%;
-            height: 120px;
+            height: 260px;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -577,7 +547,7 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
           }
           
           .keterangan {
-            margin-top: 30px;
+            margin-top: 5px;
             font-size: 10pt;
             line-height: 1.5;
             color: #000000 !important;
@@ -665,14 +635,13 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
       </head>
       <body style="color: #000000 !important;">
         <div class="header">
-          <h3 style="color: #000000 !important;">UNIT PELAKSANA TEKNIS BINA MARGA</h3>
-          <h3 style="color: #000000 !important;">WILAYAH PRAJEKAN</h3>
-        </div>
-
         <h3 class="title" style="color: #000000 !important;">FOTO LOKASI</h3>
-        <h4 style="text-align: center; margin: 5px 0; color: #000000 !important;">WILAYAH ${item.wilayah_penugasan?.toUpperCase() || wilayah.toUpperCase()}</h4>
+        <h4 style="text-align: center; margin: 5px 0; color: #000000 !important;">WILAYAH ${item.wilayah_penugasan?.toUpperCase() || wilayah.toUpperCase()} - ${item.nama || '-'}</h4>
         <h4 style="text-align: center; margin: 5px 0; color: #000000 !important;">Tanggal : ${formatDate(item.tanggal) || formatDate(tanggal)}</h4>
         <h4 style="text-align: center; margin: 5px 0 20px 0; color: #000000 !important;">Ruas : ${item.ruas_jalan || '-'}</h4>
+        </div>
+
+
 
         <table>
           <thead>
@@ -723,22 +692,6 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
             </tr>
           </tbody>
         </table>
-
-        <div class="keterangan">
-          <p style="color: #000000 !important;"><strong style="color: #000000 !important;">Keterangan:</strong></p>
-          <p style="color: #000000 !important;">1. Foto 0% : Kondisi awal lokasi sebelum pekerjaan</p>
-          <p style="color: #000000 !important;">2. Foto 50% : Kondisi saat pekerjaan sedang berlangsung</p>
-          <p style="color: #000000 !important;">3. Foto 100% : Kondisi setelah pekerjaan selesai</p>
-          <p style="margin-top: 10px; color: #000000 !important;">
-            <strong style="color: #000000 !important;">Pegawai:</strong> 
-            <span class="wrap-text">${item.nama || '-'}</span>
-          </p>
-          <p style="color: #000000 !important;">
-            <strong style="color: #000000 !important;">Kegiatan:</strong> 
-            <span class="wrap-text">${item.kegiatan || '-'}</span>
-          </p>
-        </div>
-
       </body>
       </html>
     `;
@@ -842,8 +795,8 @@ export default function LaporanGeneratorRekap({ data, wilayah, tanggal, isLoadin
     setError(null);
 
     try {
-      // Bagi data menjadi beberapa halaman (3 baris per halaman)
-      const dataPages = chunkDataForPages(data, 3);
+      // Bagi data menjadi beberapa halaman (4 baris per halaman)
+      const dataPages = chunkDataForPages(data, 4);
       const totalPages = dataPages.length;
       
       const pdf = new jsPDF({
