@@ -401,29 +401,18 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
                 )}
               </div>
 
-              <video ref={videoRef} className="w-full rounded-lg" autoPlay playsInline muted />
+              <div className="relative bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
+  <video 
+    ref={videoRef} 
+    className="w-full h-full object-cover" 
+    autoPlay 
+    playsInline 
+    muted 
+  />
+</div>
               <canvas ref={canvasRef} className="hidden" />
 
-              {/* 🔥 MAP + INFO PREVIEW */}
-              {locationData && (
-                <div className="mt-2 flex gap-2">
-                  <div className="w-1/2">
-                    <GoogleMapEmbed locationData={locationData} />
-                  </div>
-
-                  <div className="w-1/2 text-xs bg-slate-100 rounded-lg p-2">
-                    <div className="font-semibold flex items-center gap-1 mb-1">
-                      <MapPin size={12} />
-                      Lokasi
-                    </div>
-                    <div className="line-clamp-4">{locationData.address}</div>
-                    <div className="mt-1">
-                      {locationData.coords.lat.toFixed(5)},{" "}
-                      {locationData.coords.lon.toFixed(5)}
-                    </div>
-                  </div>
-                </div>
-              )}
+             
 
               <div className="mt-4 flex justify-center">
                 <button
