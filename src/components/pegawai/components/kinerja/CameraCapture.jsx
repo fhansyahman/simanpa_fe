@@ -371,7 +371,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
 
   return (
     <div className="fixed inset-0 bg-black/90 flex justify-center items-center z-50">
-      <div className="bg-white w-full max-w-md rounded-xl overflow-hidden">
+      <div className="bg-white w-full max-w-xs rounded-xl overflow-hidden">
         
         {/* HEADER */}
         <div className="flex justify-between p-3 border-b">
@@ -401,13 +401,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
                 )}
               </div>
 
-              <video 
-  ref={videoRef} 
-  className="w-full rounded-lg object-cover rotate-90 scale-[1.8]"
-  autoPlay 
-  playsInline 
-  muted 
-/>
+              <video ref={videoRef} className="w-full rounded-lg" autoPlay playsInline muted />
               <canvas ref={canvasRef} className="hidden" />
 
              
