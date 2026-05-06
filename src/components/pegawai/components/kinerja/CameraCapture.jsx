@@ -401,15 +401,13 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
                 )}
               </div>
 
-              <div className="relative bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
-  <video 
-    ref={videoRef} 
-    className="w-full h-full object-cover" 
-    autoPlay 
-    playsInline 
-    muted 
-  />
-</div>
+              <video 
+  ref={videoRef} 
+  className="w-full rounded-lg object-cover rotate-90 scale-[1.8]"
+  autoPlay 
+  playsInline 
+  muted 
+/>
               <canvas ref={canvasRef} className="hidden" />
 
              
