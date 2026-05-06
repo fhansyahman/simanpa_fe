@@ -371,7 +371,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
 
   return (
     <div className="fixed inset-0 bg-black/90 flex justify-center items-center z-50">
-      <div className="bg-white w-full max-w-xs rounded-xl overflow-hidden">
+      <div className="bg-white w-56 max-w-full rounded-xl overflow-hidden">
         
         {/* HEADER */}
         <div className="flex justify-between p-3 border-b">
@@ -404,7 +404,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
               <video ref={videoRef} className="w-full rounded-lg" autoPlay playsInline muted />
               <canvas ref={canvasRef} className="hidden" />
 
-             
+      
 
               <div className="mt-4 flex justify-center">
                 <button
@@ -439,10 +439,6 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
                 Lokasi:
               </div>
               <div>{locationData.address}</div>
-              <div>
-                {locationData.coords.lat.toFixed(5)},{" "}
-                {locationData.coords.lon.toFixed(5)}
-              </div>
             </div>
           )}
         </div>
