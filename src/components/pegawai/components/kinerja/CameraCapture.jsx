@@ -371,7 +371,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
 
   return (
     <div className="fixed inset-0 bg-black/90 flex justify-center items-center z-50">
-      <div className="bg-white w-56 max-w-full rounded-xl overflow-hidden">
+      <div className="bg-white w-48 max-w-full rounded-xl overflow-hidden">
         
         {/* HEADER */}
         <div className="flex justify-between p-3 border-b">
@@ -382,24 +382,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
         <div className="p-3">
           {!photo ? (
             <>
-              {/* Camera Controls */}
-              <div className="flex justify-between items-center mb-3">
-                <div className="text-sm text-slate-600">
-                  Kamera: <span className="font-medium">
-                    {actualCameraLabel || "Belakang"}
-                  </span>
-                </div>
-                {cameraDevices.length > 1 && (
-                  <button
-                    onClick={switchCamera}
-                    disabled={isSwitchingCamera}
-                    className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm hover:bg-blue-200 transition-colors"
-                  >
-                    <RefreshCw size={14} className={isSwitchingCamera ? "animate-spin" : ""} />
-                    Ganti Kamera
-                  </button>
-                )}
-              </div>
+              
 
               <video ref={videoRef} className="w-full rounded-lg" autoPlay playsInline muted />
               <canvas ref={canvasRef} className="hidden" />
@@ -421,27 +404,7 @@ export default function CameraCapture({ onCapture, onClose, isOpen }) {
           )}
         </div>
 
-        {/* INFO LOKASI */}
-        <div className="p-3 border-t text-xs">
-          {loadingLocation && (
-            <div className="flex gap-2">
-              <Loader2 className="animate-spin" size={14} />
-              Mengambil lokasi...
-            </div>
-          )}
 
-          {locationError && <div className="text-red-500">{locationError}</div>}
-
-          {locationData && (
-            <div>
-              <div className="flex items-center gap-1 font-semibold">
-                <MapPin size={12} />
-                Lokasi:
-              </div>
-              <div>{locationData.address}</div>
-            </div>
-          )}
-        </div>
 
         {/* FOOTER */}
         <div className="flex p-3 border-t">
