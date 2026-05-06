@@ -126,7 +126,7 @@ export default function CameraUploader({
       {/* Preview dengan tombol Download Hijau */}
       {tempPhoto && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md">
+          <div className="bg-white rounded-xl shadow-xl w-72 max-w-md">
             <div className="p-4 border-b border-slate-200">
               <h3 className="text-lg font-semibold">Preview Foto</h3>
               <p className="text-sm text-slate-500">Download foto hasil tangkapan kamera</p>
