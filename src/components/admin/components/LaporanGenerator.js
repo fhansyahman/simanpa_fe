@@ -158,7 +158,7 @@ export default function LaporanGenerator({ data, isLoading = false }) {
           
           .foto-container {
             width: 100%;
-            height: 120px;
+            height: 260px;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -259,14 +259,13 @@ export default function LaporanGenerator({ data, isLoading = false }) {
       </head>
       <body style="color: #000000 !important;">
         <div class="header">
-          <h3 style="color: #000000 !important;">UNIT PELAKSANA TEKNIS BINA MARGA</h3>
-          <h3 style="color: #000000 !important;">WILAYAH PRAJEKAN</h3>
-        </div>
 
         <h3 class="title" style="color: #000000 !important;">FOTO LOKASI</h3>
         <h4 style="text-align: center; margin: 5px 0; color: #000000 !important;">WILAYAH ${data.wilayah_penugasan?.toUpperCase() || 'KLABANG'}</h4>
         <h4 style="text-align: center; margin: 5px 0; color: #000000 !important;">Tanggal : ${formatDate(data.tanggal)}</h4>
         <h4 style="text-align: center; margin: 5px 0 20px 0; color: #000000 !important;">Ruas : ${data.ruas_jalan || '-'}</h4>
+        </div>
+
 
         <table>
           <thead>
@@ -318,22 +317,7 @@ export default function LaporanGenerator({ data, isLoading = false }) {
           </tbody>
         </table>
 
-        <div class="keterangan">
-          <p style="color: #000000 !important;"><strong style="color: #000000 !important;">Keterangan:</strong></p>
-          <p style="color: #000000 !important;">1. Foto 0% : Kondisi awal lokasi sebelum pekerjaan</p>
-          <p style="color: #000000 !important;">2. Foto 50% : Kondisi saat pekerjaan sedang berlangsung</p>
-          <p style="color: #000000 !important;">3. Foto 100% : Kondisi setelah pekerjaan selesai</p>
-          <p style="margin-top: 10px; color: #000000 !important;">
-            <strong style="color: #000000 !important;">Pegawai:</strong> 
-            <span class="wrap-text">${data.nama || '-'}</span>
-          </p>
-          <p style="color: #000000 !important;">
-            <strong style="color: #000000 !important;">Kegiatan:</strong> 
-            <span class="wrap-text">${data.kegiatan || '-'}</span>
-          </p>
-        </div>
 
-        <div class="page-number" style="color: #000000 !important;">Halaman 1 dari 1</div>
       </body>
       </html>
     `;
@@ -594,15 +578,13 @@ export default function LaporanGenerator({ data, isLoading = false }) {
       </head>
       <body style="color: #000000 !important;">
         <div class="header">
-          <h3 style="color: #000000 !important;">UNIT PELAKSANA TEKNIS BINA MARGA</h3>
-          <h3 style="color: #000000 !important;">WILAYAH PRAJEKAN</h3>
-        </div>
-
         <h3 class="title" style="color: #000000 !important;">HASIL KERJA LAPANGAN</h3>
         <h4 style="text-align: center; margin: 2px 0; color: #000000 !important;">WILAYAH ${data.wilayah_penugasan?.toUpperCase() || 'KLABANG'}</h4>
         <h4 style="text-align: center; margin: 2px 0 5px 0; color: #000000 !important;">Tanggal : ${formatDate(data.tanggal)}</h4>
 
+        </div>
         <p><strong>Nama:</strong> ${data.nama || '-'}</p>
+
 
         <div class="table-container">
           <table>
@@ -650,41 +632,14 @@ export default function LaporanGenerator({ data, isLoading = false }) {
                     }
                   </div>
                 </td>
-                <td class="measurement" style="color: #000000 !important;">${data.panjang_kr || '0'}</td>
-                <td class="measurement" style="color: #000000 !important;">${data.panjang_kn || '0'}</td>
+                <td class="measurement" style="color: #000000 !important;">${data.panjang_kr || '0'} M</td>
+                <td class="measurement" style="color: #000000 !important;">${data.panjang_kn || '0'} M</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="keterangan-table">
-          <p style="color: #000000 !important;"><strong style="color: #000000 !important;">Keterangan:</strong> KR = Kilometer Kanan, KN = Kilometer Kiri</p>
-        </div>
-
-        <!-- Tanda Tangan (HANYA DI HALAMAN 2) -->
-        <div class="ttd-container">
-          <div class="ttd">
-            <div>
-              <p style="color: #000000 !important;">Mengetahui,</p>
-              <p style="color: #000000 !important;">Kepala UPTD</p>
-              <div class="ttd-space"></div>
-              <div class="ttd-line"></div>
-              <p style="color: #000000 !important;">BUDI RAHMANTO, ST</p>
-              <p style="color: #000000 !important;">NIP : 19711009 200212 1 007.</p>
-            </div>
-            
-            <div>
-              <p style="color: #000000 !important;">Prajekan, ${formatDate(data.tanggal)}</p>
-              <p style="color: #000000 !important;">Koordinator</p>
-              <div class="ttd-space"></div>
-              <div class="ttd-line"></div>
-              <p style="color: #000000 !important;">SUTRAWI</p>
-              <p style="color: #000000 !important;">NIP : 19691004 200701 1 014.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="page-number" style="color: #000000 !important;">Halaman 1 dari 1</div>
+      
       </body>
       </html>
     `;
