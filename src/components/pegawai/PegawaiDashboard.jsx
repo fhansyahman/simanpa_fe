@@ -257,7 +257,7 @@ export default function PresensiPage() {
           <ActionButton
             onClick={() => router.push("/pegawai/pekerjaanharian")}
             icon={<BookOpen className="w-5 h-5" />}
-            label="Laporan Kinerja Harian"
+            label="Laporan Kerja Harian"
             color="from-teal-500 to-teal-600"
           />
           <ActionButton
